@@ -58,7 +58,10 @@ async def selfie(interaction, name: str, realm: str):
     if f"{selfie}" == "None":
         await interaction.response.send_message("Error retrieving character. Check spelling and use dashes (-) for the spaces in realm names.")
     else:
-        await interaction.response.send_message(f"{selfie}")
+        await interaction.response.defer()
+        await asyncio.sleep(3)
+        await interaction.followup.send(f"{selfie}")
+        # await interaction.response.send_message(f"{selfie}")
     print("Returned selfie.")
 
 
