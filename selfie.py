@@ -30,7 +30,8 @@ def get_selfie(client_id, client_secret, name, realm):
         response = requests.get(api_url, headers=headers, params=params)
         response.raise_for_status()
         data = response.json()
-        avatar_url = data["assets"][0]["value"]
+        print(data)
+        avatar_url = data["assets"][2]["value"]
         return avatar_url
 
     except requests.exceptions.RequestException as e:
