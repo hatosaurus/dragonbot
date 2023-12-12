@@ -52,19 +52,20 @@ async def add(interaction, minutes: int, reminder: str):
 
 @tree.command(name="selfie", description="Displays your most recent selfie.")
 async def selfie(interaction, name: str, realm: str):
+    await interaction.response.defer()
     name_lwr = name.lower()
     realm_lwr = realm.lower()
     selfie = get_selfie(battle_net_client, battle_net_key, name_lwr, realm_lwr)
     if f"{selfie}" == "None":
         await interaction.response.send_message("Error retrieving character. Check spelling and use dashes (-) for the spaces in realm names.")
     else:
-        await interaction.response.defer()
-        await asyncio.sleep(5)
+        await asyncio.sleep(2)
         # await interaction.followup.send(f"{selfie}")
         file = discord.File(f"character_images/{name}{realm}.png")
+        await asyncio.sleep(2)
         await interaction.followup.send(file=file, content=f"{name} {realm}")
         # await interaction.response.send_message(f"{selfie}")
-    print("Returned selfie.")
+    print(f"Returned selfie for {name} {realm}.")
 
 
 @tree.command(name="token", description="Checks the current price of the WoW token.")

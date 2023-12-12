@@ -1,6 +1,7 @@
 import os
 import requests
 from PIL import Image
+import time
 
 client_id = os.environ["CLIENT_ID"]
 client_secret = os.environ["CLIENT_SECRET"]
@@ -29,6 +30,7 @@ def process_image(image_link, name, realm):
     im_crop = im.crop((left, upper, right, lower))
     # im_crop.show()
     im_crop.save(f"character_images/{name}{realm}.png", "PNG")
+    time.sleep(2)
     final_img = f"character_images/{name}{realm}.png"
     return final_img
 
