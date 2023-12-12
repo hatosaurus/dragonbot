@@ -26,7 +26,7 @@ def process_image(image_link, name, realm):
     clear_folder(image_folder)
     # image_link = get_selfie(client_id, client_secret, name, realm)
     im = Image.open(requests.get(image_link, stream=True).raw)
-    (left, upper, right, lower) = (350, 150, 1200, 1050)
+    (left, upper, right, lower) = (380, 170, 1140, 1020)
     im_crop = im.crop((left, upper, right, lower))
     # im_crop.show()
     im_crop.save(f"character_images/{name}{realm}.png", "PNG")

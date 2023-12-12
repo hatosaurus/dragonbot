@@ -57,7 +57,7 @@ async def selfie(interaction, name: str, realm: str):
     realm_lwr = realm.lower()
     selfie = get_selfie(battle_net_client, battle_net_key, name_lwr, realm_lwr)
     if f"{selfie}" == "None":
-        await interaction.response.send_message("Error retrieving character. Check spelling and use dashes (-) for the spaces in realm names.")
+        await interaction.followup.send("Error retrieving character. Check spelling and use dashes (-) for the spaces in realm names.")
     else:
         await asyncio.sleep(2)
         # await interaction.followup.send(f"{selfie}")
