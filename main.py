@@ -59,8 +59,10 @@ async def selfie(interaction, name: str, realm: str):
         await interaction.response.send_message("Error retrieving character. Check spelling and use dashes (-) for the spaces in realm names.")
     else:
         await interaction.response.defer()
-        await asyncio.sleep(3)
-        await interaction.followup.send(f"{selfie}")
+        await asyncio.sleep(5)
+        # await interaction.followup.send(f"{selfie}")
+        file = discord.File(f"character_images/{name}{realm}.png")
+        await interaction.followup.send(file=file, content=f"{name} {realm}")
         # await interaction.response.send_message(f"{selfie}")
     print("Returned selfie.")
 
