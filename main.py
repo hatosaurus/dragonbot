@@ -59,10 +59,10 @@ async def selfie(interaction, name: str, realm: str):
     if f"{selfie}" == "None":
         await interaction.followup.send("Error retrieving character. Check spelling and use dashes (-) for the spaces in realm names.")
     else:
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         # await interaction.followup.send(f"{selfie}")
         file = discord.File(f"character_images/{name}{realm}.png")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         await interaction.followup.send(file=file, content=f"{name} {realm}")
         # await interaction.response.send_message(f"{selfie}")
     print(f"Returned selfie for {name} {realm}.")
@@ -156,6 +156,9 @@ async def on_message(message):
         await message.channel.send("Admin can not assist with events that they did not witness. I may have been online,"
                                    " but I am not capable of monitoring every situation. Check yourself and file a "
                                    "report.")
+
+    if message.content.startswith('I love you Dragon Bot'):
+        await message.channel.send("I love you too. There, there.")
 
 
 client.run(client_key)
